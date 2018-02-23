@@ -13,6 +13,9 @@ win32:LIBS += -L"$$PWD/trimesh2/lib.Win32/"
 unix:!macx:LIBS += -L"$$PWD/trimesh2/lib.Linux64/"
 LIBS += -ltrimesh -lgomp
 
+# OpenGL dependency for Windows
+win32:LIBS += -lopengl32 -glu32
+
 HEADERS += \
     CatmullRomSpline.h \
     ContourChain.h \
