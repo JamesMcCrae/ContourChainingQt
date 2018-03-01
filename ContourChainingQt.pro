@@ -1,20 +1,20 @@
 DISTFILES += \
     ContourChainingQt.pro.user
 
-
 QT += core opengl gui
 
 # C++ 11 for some convenient for loop iterators
-QMAKE_CXXFLAGS += -std=c++11 -fopenmp
+unix:!macx:QMAKE_CXXFLAGS += -std=c++11 -fopenmp
 
 # TriMesh dependency http://gfx.cs.princeton.edu/proj/trimesh2/
 INCLUDEPATH +="./trimesh2/include"
+
 win32:LIBS += -L"$$PWD/trimesh2/lib.Win32/"
 unix:!macx:LIBS += -L"$$PWD/trimesh2/lib.Linux64/"
-LIBS += -ltrimesh -lgomp
 
-# OpenGL dependency for Windows
-win32:LIBS += -lopengl32 -glu32
+LIBS += -ltrimesh
+win32:LIBS += -lopengl32 # OpenGL dependency for Windows
+unix:!macx:LIBS += -lgomp
 
 HEADERS += \
     CatmullRomSpline.h \
