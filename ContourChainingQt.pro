@@ -2,6 +2,8 @@ DISTFILES += \
     ContourChainingQt.pro.user
 
 
+CONFIG += c++11
+
 QT += core opengl gui
 
 # C++ 11 for some convenient for loop iterators
